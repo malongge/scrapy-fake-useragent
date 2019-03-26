@@ -1,7 +1,9 @@
 import logging
+
 from fake_useragent import UserAgent
 
 logger = logging.getLogger(__name__)
+
 
 class RandomUserAgentMiddleware(object):
     def __init__(self, crawler):
@@ -21,7 +23,7 @@ class RandomUserAgentMiddleware(object):
         def get_ua():
             '''Gets random UA based on the type setting (random, firefox…)'''
             return getattr(self.ua, self.ua_type)
-        
+
         if self.per_proxy:
             proxy = request.meta.get('proxy')
             if proxy not in self.proxy2ua:
